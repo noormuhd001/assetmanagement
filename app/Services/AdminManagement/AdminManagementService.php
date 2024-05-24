@@ -38,10 +38,16 @@ public function getDashboard(){
 }
 public function geteDashboard(){
     $user = Auth::user();
+    $Ticketissued = ticket::where('sender', $user->id)->count();
+    $Ticketstatus = ticket::where('sender', $user->id && $user->status == 2)->count();
+    $Aseet = Asset::where('employeeid',$user->id)->count();
     $username = $user->name;
 
     return [
         'username' => $username,
+        'Asset' => $Aseet,
+        'ticketissued'=> $Ticketissued,
+        'ticketstatus'=> $Ticketstatus,
     ];
 }
 

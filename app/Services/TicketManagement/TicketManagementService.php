@@ -25,10 +25,15 @@ use App\Models\User;
     }
 
     public function submitticket($data){
+
+        $loggeduser= Auth()->user();
+
+
         $ticket = new ticket();
         $ticket->name = $data->name;
         $ticket->email = $data->email;
         $ticket->message = $data->message;
+        $ticket->sender = $loggeduser->id;
         $ticket->subject = $data->product;
         $ticket->save();
 

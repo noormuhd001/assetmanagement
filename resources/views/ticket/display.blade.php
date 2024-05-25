@@ -1,11 +1,8 @@
 @extends('layout.layout')
-
 @section('content')
-
 @section('breadcrumbs')
     {{ Breadcrumbs::render('ticket.display') }}
 @endsection
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
@@ -45,5 +42,4 @@
         </div>
     </div>
 </div>
-
 @endsection

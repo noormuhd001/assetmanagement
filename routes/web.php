@@ -18,11 +18,6 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-
-// })->name('landingpage');
-
 Route::group(['middleware' => ['auth', 'role.check']], function () {
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -31,14 +26,12 @@ Route::group(['middleware' => ['auth', 'role.check']], function () {
     Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('employee.delete');
     Route::post('employee/update', [EmployeeController::class, 'update'])->name('employee.update');
-    Route::get('/employee/details/{id}',[EmployeeController::class,'details'])->name('employee.details');
-    
+    Route::get('/employee/details/{id}', [EmployeeController::class, 'details'])->name('employee.details');
 
     Route::get('/employee/notification/count', [NotificationController::class, 'notificationCount'])->name('employee.notification.count');
     Route::get('/notification', [NotificationController::class, 'notifications'])->name('employee.notification');
     Route::get('user-notify', [NotificationController::class, 'index'])->name('notification.index');
     Route::patch('/notifications/{notification}/read', [NotificationController::class, 'markAsRead']);
-    
 
     Route::get('/index', [AssetController::class, 'index'])->name('asset.index');
     Route::get('/addasset', [AssetController::class, 'create'])->name('asset.create');
@@ -46,11 +39,9 @@ Route::group(['middleware' => ['auth', 'role.check']], function () {
     Route::get('/asset/edit/{id}', [AssetController::class, 'edit'])->name('asset.edit');
     Route::get('/asset/delete/{id}', [AssetController::class, 'delete'])->name('asset.delete');
     Route::post('/asset/update', [AssetController::class, 'update'])->name('asset.update');
-    Route::get('/userview',[AssetController::class,'listAsset'])->name('asset.list');
-    Route::get('/addasset/{id}/{assetid}',[AssetController::class,'addasset'])->name('addasset');
-    Route::get('/remove/{id}',[AssetController::class,'removeasset'])->name('removeasset');
-
-
+    Route::get('/userview', [AssetController::class, 'listAsset'])->name('asset.list');
+    Route::get('/addasset/{id}/{assetid}', [AssetController::class, 'addasset'])->name('addasset');
+    Route::get('/remove/{id}', [AssetController::class, 'removeasset'])->name('removeasset');
 
     Route::get('/raiseticket', [TicketController::class, 'raise'])->name('ticket.raise');
     Route::post('/raiseticket/submit', [TicketController::class, 'submit'])->name('ticket.submit');
@@ -63,8 +54,6 @@ Route::group(['middleware' => ['auth', 'role.check']], function () {
     Route::post('/ticket/status/reply/{id}', [TicketController::class, 'adminreply'])->name('ticket.adminreply');
 });
 
-
-
 Route::get('/addemployee', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('/employeestore', [EmployeeController::class, 'store'])->name('employee.store');
 Route::get('/verify/{id}', [EmployeeController::class, 'verify'])->name('employee.verify');
@@ -73,7 +62,4 @@ Route::get('/register', [AdminController::class, 'register'])->name('register');
 Route::post('/signup', [AdminController::class, 'adminSignup'])->name('signup');
 Route::post('/login', [AdminController::class, 'login'])->name('login');
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
-
-
-// Route::get('/notifications/count', [NotificationController::class,'notificationcount'])->name('notifications.count');
 

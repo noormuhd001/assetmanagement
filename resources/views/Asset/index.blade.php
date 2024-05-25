@@ -1,33 +1,28 @@
 @extends('layout.layout')
 @section('content')
-
-@push('style')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.0/sweetalert2.min.css" integrity="sha512-OWGg8FcHstyYFwtjfkiCoYHW2hG3PDWwdtczPAPUcETobBJOVCouKig8rqED0NMLcT9GtE4jw6IT1CSrwY87uw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    @push('style')
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.0/sweetalert2.min.css"
+            integrity="sha512-OWGg8FcHstyYFwtjfkiCoYHW2hG3PDWwdtczPAPUcETobBJOVCouKig8rqED0NMLcT9GtE4jw6IT1CSrwY87uw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @endpush
-
 @section('breadcrumbs')
     {{ Breadcrumbs::render('asset.index') }}
 @endsection
-
-@if(session('success'))
+@if (session('success'))
     <script>
         Swal.fire({
             icon: 'success',
             title: 'Success!',
             text: '{{ session('success') }}',
             showConfirmButton: false,
-            timer: 2500 // milliseconds
+            timer: 2500
         });
-       
     </script>
 @endif
-
 <div class="container">
-
     <table class="table table-bordered data-table">
         <thead>
             <tr>
@@ -51,7 +46,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.0/sweetalert2.min.js" integrity="sha512-Wi5Ms24b10EBwWI9JxF03xaAXdwg9nF51qFUDND/Vhibyqbelri3QqLL+cXCgNYGEgokr+GA2zaoYaypaSDHLg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.0/sweetalert2.min.js"
+        integrity="sha512-Wi5Ms24b10EBwWI9JxF03xaAXdwg9nF51qFUDND/Vhibyqbelri3QqLL+cXCgNYGEgokr+GA2zaoYaypaSDHLg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         $(function() {
 
@@ -75,17 +72,12 @@
                         data: 'category',
                         name: 'category'
                     },
-                    // {
-                    //     data:'employeeid',
-                    //     name:'employeeid'
-                    // },
                     {
-                       data:'status',
-                       name:'status', 
-                       render: function(data, type, full, meta) {
-                           
+                        data: 'status',
+                        name: 'status',
+                        render: function(data, type, full, meta) {
                             return data == 1 ? '<p class="text-danger">Stockout</p>' :
-                            '<p class="text-success">Active</p>';
+                                '<p class="text-success">Active</p>';
                         }
                     },
                     {
@@ -100,6 +92,4 @@
         });
     </script>
 @endpush
-
-
 @endsection

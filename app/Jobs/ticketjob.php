@@ -15,24 +15,14 @@ class ticketjob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $user;  
-    /**
-     * Create a new job instance.
-     */
+   
     public function __construct($user)
-    {
-        
+    {        
         $this->user = $user;
-        //
     }
 
-    /**
-     * Execute the job.
-     */
     public function handle(): void
     {
-
         Mail::to($this->user->email)->send(new Ticketmail($this->user));
-        
-        //
     }
 }

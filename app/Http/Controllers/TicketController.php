@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Ticket\TicketReplyRequest;
 use App\Http\Requests\Ticket\TicketStoreRequest;
-use Illuminate\Http\Request;
 use App\Jobs\ticketjob;
 use App\Services\TicketManagement\TicketManagementService;
 
 class TicketController extends Controller
 {
     private $ticketManagementService;
-
     public function __construct(TicketManagementService $ticketManagementService)
     {
         $this->ticketManagementService = $ticketManagementService;
@@ -20,17 +18,16 @@ class TicketController extends Controller
     {
         try {
             $data = $this->ticketManagementService->raise();
-            if($data){
+            if ($data) {
                 return view("ticket.index", $data);
-            }else{
-               return abort(404);
+            } else {
+                return abort(404);
             }
         } catch (\Exception $e) {
             report($e);
             return abort(500);
         }
     }
-
     public function submit(TicketStoreRequest $request)
     {
         try {
@@ -46,8 +43,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
-
     public function display()
     {
         try {
@@ -58,7 +53,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
     public function show($id)
     {
         try {
@@ -69,7 +63,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
     public function reply(TicketReplyRequest $request, $id)
     {
         try {
@@ -85,7 +78,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
     public function admindisplay()
     {
         try {
@@ -96,7 +88,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
     public function adminshow($id)
     {
         try {
@@ -107,7 +98,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
     public function ticketclose($id)
     {
         try {
@@ -123,7 +113,6 @@ class TicketController extends Controller
             return abort(500);
         }
     }
-
     public function adminreply(TicketReplyRequest $request, $id)
     {
         try {

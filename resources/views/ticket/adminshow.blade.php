@@ -1,40 +1,33 @@
 @extends('layout.layout')
-
 @section('content')
 @section('breadcrumbs')
     {{ Breadcrumbs::render('ticket.adminshow', $ticket->id) }}
 @endsection
-
 @push('style')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
-
-@if(session('success'))
+@if (session('success'))
     <script>
         Swal.fire({
             icon: 'success',
             title: 'Success!',
             text: '{{ session('success') }}',
             showConfirmButton: false,
-            timer: 2500 // milliseconds
+            timer: 2500
         });
     </script>
 @endif
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Ticket Details</div>
-
                 <div class="card-body">
                     <p><strong>Name:</strong> {{ $ticket->name }}</p>
                     <p><strong>Email:</strong> {{ $ticket->email }}</p>
                     <p><strong>Product:</strong> {{ $ticket->subject }}</p>
                     <p><strong>Message:</strong> {{ $ticket->message }}</p>
-
                     <hr>
-
                     <h4>Messages</h4>
                     @foreach ($messages as $message)
                         <div>
@@ -43,7 +36,6 @@
                         </div>
                         <hr>
                     @endforeach
-
                     @if ($ticket->status != 2)
                         <form method="POST" action="{{ route('ticket.adminreply', $ticket->id) }}">
                             @csrf
@@ -61,7 +53,6 @@
                     @else
                         <p>The ticket is closed and cannot be replied to.</p>
                     @endif
-
                     <br>
                     @if ($ticket->status != 2)
                         <a href="{{ route('ticket.close', $ticket->id) }}">

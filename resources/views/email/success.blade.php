@@ -9,18 +9,9 @@
 </head>
 
 <body>
-
-
-
     <h1>Hello! {{ $user->name }}</h1>
     <br>
-
     <p>Verification successful!</p>
-
-
-
-
-    <!-- Include SweetAlert CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>

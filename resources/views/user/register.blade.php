@@ -1,13 +1,7 @@
 <?php
-
 $verifycode = random_int(1, PHP_INT_MAX);
 $successMessage = session('success');
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,29 +9,19 @@ $successMessage = session('success');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Validation Form</title>
-
-    <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <style>
-        /* Centering the form */
         .center-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* Set the height of the container to full viewport height */
         }
 
-        /* Add padding around the form */
         .form-container {
             padding: 20px;
             background-color: #fff;
@@ -49,25 +33,13 @@ $successMessage = session('success');
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
-
-
-        <!-- Content Wrapper. Contains page content -->
-
-        <!-- Content Header (Page header) -->
-
-
         <div class="center-wrapper">
             <div class="form-container">
-                <!-- left column -->
                 <div class="col-md-12">
-                    <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"> Signup</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
                         <form action="{{ route('signup') }}" method="POST">
                             @csrf
                             <div class="card-body">
@@ -84,7 +56,6 @@ $successMessage = session('success');
                                         </span>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
                                     <input type="text" name="phone" id="phone" placeholder="Enter Phone No"
@@ -96,7 +67,6 @@ $successMessage = session('success');
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                {{--  --}}
                                 <div class="form-group">
                                     <label for="email">Email address</label>
                                     <input type="email" name="email"
@@ -128,31 +98,19 @@ $successMessage = session('success');
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                             <div class="card-footer">
                                 <input type="submit" value="submit" class="btn btn-primary">
                                 <p>Already have an Account <a href="{{ route('loginpage') }}">Login</a></p>
                             </div>
                         </form>
                     </div>
-                    <!-- /.card -->
                 </div>
-
                 <div class="col-md-6">
                 </div>
-
             </div>
-
         </div>
-
         </section>
-
-
-
     </div>
-
-
-
     @if ($successMessage)
         <script>
             $(document).ready(function() {
@@ -168,23 +126,9 @@ $successMessage = session('success');
         </script>
     @endif
 
-    <!-- ./wrapper -->
-    {{-- 
-<!-- jQuery -->
-{{-- <script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- jquery-validation --> --}}
 
-    <!-- AdminLTE App -->
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../dist/js/adminlte.min.js"></script>
-
-
-
-
-
-
 </body>
 
 </html>

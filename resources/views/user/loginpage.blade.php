@@ -5,25 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Validation Form</title>
-
-    <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <style>
-        /* Centering the form */
         .center-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* Set the height of the container to full viewport height */
         }
 
-        /* Add padding around the form */
         .form-container {
             padding: 20px;
             background-color: #fff;
@@ -34,75 +27,50 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-
-
-
-
-
     <div class="center-wrapper">
         <div class="form-container">
-            <!-- left column -->
             <div class="col-md-12">
 
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title"> Login to system</h3>
                     </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror " id="email"
+                                <input type="email" name="email"
+                                    class="form-control @error('email') is-invalid @enderror " id="email"
                                     placeholder="Enter email">
-                                    @error('email')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror " id="password"
-                                        placeholder="Password">
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror " id="password"
+                                    placeholder="Password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                          <p>Create an account <a href="{{ route('register') }}">signup</a></p>
-
+                            <p>Create an account <a href="{{ route('register') }}">signup</a></p>
                     </form>
                 </div>
-                <!-- /.card -->
             </div>
-            <!--/.col (left) -->
-            <!-- right column -->
             <div class="col-md-6">
-
-
             </div>
-            <!-- /.row -->
-
             </section>
-
         </div>
-
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
-
-
-
 </body>
 
 </html>

@@ -14,9 +14,6 @@ class NotificationController extends Controller
 
         $this->notificationManagementService = $notificationManagementService;
     }
-
-
-
     public function markAsRead($id)
     {
         try {
@@ -57,11 +54,13 @@ class NotificationController extends Controller
         try {
             $user = auth()->user();
             if ($user->role == 0) {
-
+                //geting messages from role  = 1
                 $notification = Notification::where('role', 0)->where('user_id', $user->id)->latest()->get();
             } else {
+                //getting messages from role =0
                 $notification = Notification::where('role', 1)->latest()->get();
             }
+
             return view('notification.show', ['notification' => $notification, 'user' => $user]);
         } catch (\Exception $e) {
             report($e);

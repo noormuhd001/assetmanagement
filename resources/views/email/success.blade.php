@@ -9,11 +9,19 @@
 </head>
 
 <body>
-    <h1>Hello! {{ $user->name }}</h1>
-    <br>
-    <p>Verification successful!</p>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Hello, {{ $user->name }}</h1>
+            </div>
+            <div class="card-body">
+                <p class="text-center">Verification successful!</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- SweetAlert2 library for a nice success message -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         // Trigger SweetAlert success notification
         Swal.fire({

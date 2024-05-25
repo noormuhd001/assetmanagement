@@ -20,7 +20,11 @@ class NotificationController extends Controller
             $notification = $this->notificationManagementService->markAsRead($id);
 
             if ($notification) {
-                return response()->json(['message' => 'Notification marked as read.']);
+                if (auth()->user()->role == 1) {
+                    return redirect()->route('ticket.adminshow', ['id' => $notification->ticket_id]);
+                } {
+                    return redirect()->route('ticket.show', ['id' => $notification->ticket_id]);
+                }
             } else {
                 return abort(404);
             }

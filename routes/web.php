@@ -31,7 +31,9 @@ Route::group(['middleware' => ['auth', 'role.check']], function () {
     Route::get('/employee/notification/count', [NotificationController::class, 'notificationCount'])->name('employee.notification.count');
     Route::get('/notification', [NotificationController::class, 'notifications'])->name('employee.notification');
     Route::get('user-notify', [NotificationController::class, 'index'])->name('notification.index');
-    Route::patch('/notifications/{notification}/read', [NotificationController::class, 'markAsRead']);
+
+
+    Route::get('/notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('markAsRead');
 
     Route::get('/index', [AssetController::class, 'index'])->name('asset.index');
     Route::get('/addasset', [AssetController::class, 'create'])->name('asset.create');

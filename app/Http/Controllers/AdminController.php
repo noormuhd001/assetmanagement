@@ -6,8 +6,6 @@ use App\Http\Requests\Employee\EmployeeLoginRequest;
 use App\Http\Requests\Employee\EmployeeStoreRequest;
 use App\Jobs\SendEmailJob;
 use Illuminate\Support\Facades\Auth;
-
-
 use App\Services\AdminManagement\AdminManagementService;
 
 class AdminController extends Controller
@@ -18,8 +16,6 @@ class AdminController extends Controller
     {
         $this->adminManagementService = $adminManagementService;
     }
-    //
-
     public function loginpage()
     {
         return view("user.loginpage");
@@ -44,21 +40,15 @@ class AdminController extends Controller
             return abort(500);
         }
     }
-
-
     public function login(EmployeeLoginRequest $request)
     {
         try {
-
             $credentials = [
                 'email' => $request->email,
                 'password' => $request->password,
             ];
-
-
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
-
                 if ($user->isActive) {
                     if ($user->role == 0) {
                         return redirect()->route('edashboard')->with('success', 'User login success');
@@ -76,7 +66,6 @@ class AdminController extends Controller
             return abort(500);
         }
     }
-
     public function dashboard()
     {
         try {
@@ -87,8 +76,6 @@ class AdminController extends Controller
             return abort(500);
         }
     }
-
-
     public function edashboard()
     {
         try {
@@ -99,11 +86,8 @@ class AdminController extends Controller
             return abort(500);
         }
     }
-
-
     public function logout()
     {
-
         Auth::logout();
         return view('user.loginpage');
     }

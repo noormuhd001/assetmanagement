@@ -21,7 +21,6 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         try {
-
             if ($request->ajax()) {
                 $data = $this->employeeManagementService->index(Auth::user()->id);
                 return Datatables::of($data)
@@ -29,7 +28,6 @@ class EmployeeController extends Controller
                     ->addColumn('action', function ($row) {
                         $btn = '<a href="' . route('employee.edit', ['id' => $row->id]) . '" class="edit btn btn-primary btn-sm">Edit</a> <a href="' . route('employee.delete', ['id' => $row->id]) . '" class="delete btn btn-danger btn-sm">Delete</a>
                         <a href="' . route('employee.details', ['id' => $row->id]) . '" class="delete btn btn-outline-primary btn-sm">Details</a>';
-
                         return $btn;
                     })
                     ->rawColumns(['action'])
@@ -41,21 +39,16 @@ class EmployeeController extends Controller
             return abort(500);
         }
     }
-
     public function create()
     {
         return view("employee.create");
     }
-
     public function store(EmployeeStoreRequest $request)
     {
         try {
             $user = $this->employeeManagementService->store($request);
-
             if ($user) {
-
                 dispatch(new SendEmailJob($user));
-
                 return redirect()->route('employee.create')->with('success', 'user registered successfull');
             } {
                 return abort(404);
@@ -65,7 +58,6 @@ class EmployeeController extends Controller
             return abort(500);
         }
     }
-
     public function edit($id)
     {
         try {
@@ -76,7 +68,6 @@ class EmployeeController extends Controller
             return abort(500);
         }
     }
-
     public function delete($id)
     {
         try {
@@ -91,7 +82,6 @@ class EmployeeController extends Controller
             return abort(500);
         }
     }
-
     public function verify($id)
     {
         try {
@@ -109,7 +99,6 @@ class EmployeeController extends Controller
             return abort(500);
         }
     }
-
     public function update(EmployeeUpdateRequest $request)
     {
         try {
@@ -124,7 +113,6 @@ class EmployeeController extends Controller
             return abort(500);
         }
     }
-
     public function details($id)
     {
         try {

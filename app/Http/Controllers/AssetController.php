@@ -16,9 +16,6 @@ class AssetController extends Controller
     {
         $this->assetManagementService = $assetManagementService;
     }
-
-
-
     public function index(Request $request)
     {
         try {
@@ -36,21 +33,16 @@ class AssetController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
             }
-
             return view('Asset.index');
         } catch (\Exception $e) {
             report($e);
             return abort(500);
         }
     }
-
-
     public function create()
     {
-
         return view('asset.create');
     }
-
     public function store(AssetStoreRequest $request)
     {
         try {
@@ -65,7 +57,6 @@ class AssetController extends Controller
             return abort(500);
         }
     }
-
     public function edit($id)
     {
         try {
@@ -80,12 +71,10 @@ class AssetController extends Controller
             return abort(500);
         }
     }
-
     public function delete($id)
     {
         try {
             $asset = $this->assetManagementService->deleteAsset($id);
-
             if ($asset) {
                 return redirect()->route('asset.index')->with('success', 'asset deleted successfully');
             } else {
@@ -96,7 +85,6 @@ class AssetController extends Controller
             return abort(500);
         }
     }
-
     public function update(AssetUpdateRequest $request)
     {
         try {
@@ -112,7 +100,6 @@ class AssetController extends Controller
             return abort(500);
         }
     }
-
     public function listAsset()
     {
         try {
@@ -123,7 +110,6 @@ class AssetController extends Controller
             return abort(500);
         }
     }
-
     public function addasset($id, $assetid)
     {
         try {
@@ -138,13 +124,10 @@ class AssetController extends Controller
             return abort(500);
         }
     }
-
-
     public function removeasset($id)
     {
         try {
             $removeasset = $this->assetManagementService->removeAsset($id);
-
             if ($removeasset) {
 
                 return redirect()->back()->with('success', 'asset removed successfully');

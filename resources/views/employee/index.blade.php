@@ -1,14 +1,9 @@
 @extends('layout.layout')
 @section('content')
-
 @section('breadcrumbs')
     {{ Breadcrumbs::render('employeedetails') }}
 @endsection
-
-
-
-
-@if(session('success'))
+@if (session('success'))
     <script>
         Swal.fire({
             icon: 'success',
@@ -17,15 +12,9 @@
             showConfirmButton: false,
             timer: 2500 // milliseconds
         });
-       
     </script>
 @endif
-
-
-
-
 <div class="container">
-
     <table class="table table-bordered data-table">
         <thead>
             <tr>
@@ -99,6 +88,4 @@
         });
     </script>
 @endpush
-
-
 @endsection

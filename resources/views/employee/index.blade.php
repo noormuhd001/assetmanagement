@@ -76,7 +76,6 @@
                         data: 'isActive',
                         name: 'status',
                         render: function(data, type, full, meta) {
-                            // Render status label based on the value of isActive
                             return data == 1 ? '<span class="badge bg-success">Active</span>' :
                                 '<span class="badge bg-danger">Inactive</span>';
                         }

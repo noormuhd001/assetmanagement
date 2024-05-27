@@ -39,7 +39,9 @@ class AdminManagementService
     {
         $user = Auth::user();
         $Ticketissued = ticket::where('sender', $user->id)->count();
-        $Ticketstatus = ticket::where('sender', $user->id && $user->status == 2)->count();
+        $Ticketstatus = ticket::where('sender', $user->id)
+        ->where('status', 2)
+        ->count();
         $Aseet = Asset::where('employeeid', $user->id)->count();
         $username = $user->name;
 

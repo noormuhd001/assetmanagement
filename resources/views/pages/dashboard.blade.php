@@ -14,7 +14,7 @@
                             <p>Total Assets</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fas fa-briefcase"></i>
                         </div>
                         <a href="{{ route('asset.index') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
@@ -40,7 +40,7 @@
                             <p>Ticket issued</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fas fa-ticket-alt"></i>
                         </div>
                         <a href="{{ route('ticket.admindisplay') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>

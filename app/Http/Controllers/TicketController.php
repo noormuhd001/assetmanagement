@@ -34,7 +34,8 @@ class TicketController extends Controller
             $user = $this->ticketManagementService->submitticket($request);
             if ($user) {
                 dispatch(new ticketjob($user));
-                return redirect()->back()->with('success', 'Ticket submitted successfully!');
+                return response()->json(['data' => true, 'route' => route('ticket.raise'), 'message' => 'Ticket Submitted Successfully']);
+
             } else {
                 return abort(404);
             }

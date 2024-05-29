@@ -6,24 +6,14 @@
 @push('style')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
-@if (session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: '{{ session('success') }}',
-            showConfirmButton: false,
-            timer: 2500
-        });
-    </script>
-@endif
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Create Ticket</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('ticket.submit') }}">
+                    <form method="POST" id="raiseticket">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>
@@ -62,7 +52,8 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                        <p class="text text-danger" id="messageerror"></p>
                     </form>
                 </div>
             </div>
@@ -70,3 +61,17 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        const LOGIN_ROUTE = "{{ route('ticket.submit') }}";
+        const COMMITTE_ROUTE = "{{ route('ticket.raise') }}";
+    </script>
+           
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/dist/js/ajax/raiseticket.js') }}"></script>
+   
+@endpush

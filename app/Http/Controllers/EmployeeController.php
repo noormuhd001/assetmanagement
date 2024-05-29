@@ -104,7 +104,7 @@ class EmployeeController extends Controller
         try {
             $update = $this->employeeManagementService->update($request);
             if ($update) {
-                return redirect()->route('employeedetails')->with('success', 'details updated success');
+                return response()->json(['data' => true, 'route' => route('employeedetails'), 'message' => 'employee updated successfully']);
             } else {
                 return abort(404);
             }

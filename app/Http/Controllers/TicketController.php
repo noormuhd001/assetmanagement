@@ -70,7 +70,9 @@ class TicketController extends Controller
             $user = $this->ticketManagementService->replyticket($request, $id);
             if ($user) {
                 dispatch(new ticketjob($user));
-                return redirect()->back()->with('success', 'Reply sent successfully!');
+                
+                return response()->json(['data' => true, 'route' => url()->previous(), 'message' => 'Reply sent Successively']);
+
             } else {
                 return abort(404);
             }
@@ -120,7 +122,8 @@ class TicketController extends Controller
             $user = $this->ticketManagementService->adminreplyticket($request, $id);
             if ($user) {
                 dispatch(new ticketjob($user));
-                return redirect()->back()->with('success', 'Reply sent successfully!');
+                return response()->json(['data' => true, 'route' => url()->previous(), 'message' => 'Reply sent Successively']);
+
             } {
                 return abort(404);
             }

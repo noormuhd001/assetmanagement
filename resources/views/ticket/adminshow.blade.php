@@ -37,7 +37,7 @@
                         <hr>
                     @endforeach
                     @if ($ticket->status != 2)
-                        <form method="POST" action="{{ route('ticket.adminreply', $ticket->id) }}">
+                        <form method="POST" id="adminreply">
                             @csrf
                             <div class="form-group">
                                 <label for="message">Reply:</label>
@@ -48,7 +48,8 @@
                                     </span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Send Reply</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Send Reply</button>
+                            <p class="text text-danger" id="messageerror"></p>
                         </form>
                     @else
                         <p>The ticket is closed and cannot be replied to.</p>
@@ -65,3 +66,16 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        const LOGIN_ROUTE = "{{ route('ticket.adminreply', $ticket->id) }}";
+
+    </script>
+       
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/dist/js/ajax/adminreply.js') }}"></script>
+@endpush

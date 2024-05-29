@@ -49,7 +49,8 @@ class EmployeeController extends Controller
             $user = $this->employeeManagementService->store($request);
             if ($user) {
                 dispatch(new SendEmailJob($user));
-                return redirect()->route('employee.create')->with('success', 'user registered successfull');
+               return response()->json(['data' => true, 'route' => route('employee.create'), 'message' => 'user registered successfull']);
+
             } {
                 return abort(404);
             }

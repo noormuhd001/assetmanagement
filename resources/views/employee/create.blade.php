@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header">Add Employee</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('employee.store') }}">
+                        <form method="POST" id="addemployee">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -72,9 +72,10 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-0">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
                                     Submit
                                 </button>
+                                <p class="text text-danger" id="message"></p>
                             </div>
                         </form>
                     </div>
@@ -84,19 +85,16 @@
     </div>
 </div>
 @push('script')
-    @if ($successMessage)
-        <script>
-            $(document).ready(function() {
-                $(document).Toasts('create', {
-                    title: 'Success',
-                    subtitle: 'Email Sent',
-                    body: '{{ $successMessage }}',
-                    autohide: false,
-                    class: 'bg-success',
-                    delay: 10000
-                });
-            });
-        </script>
-    @endif
+   <script>
+        const LOGIN_ROUTE = "{{ route('employee.store') }}";
+        const COMMITTEE_ROUTE = "{{ route('employee.create') }}";
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/dist/js/addemployee.js') }}"></script>
+
 @endpush
 @endsection

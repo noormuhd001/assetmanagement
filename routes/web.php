@@ -28,6 +28,9 @@ Route::group(['middleware' => ['auth', 'role.check']], function () {
     Route::post('employee/update', [EmployeeController::class, 'update'])->name('employee.update');
     Route::get('/employee/details/{id}', [EmployeeController::class, 'details'])->name('employee.details');
 
+
+
+
     Route::get('/employee/notification/count', [NotificationController::class, 'notificationCount'])->name('employee.notification.count');
     Route::get('/notification', [NotificationController::class, 'notifications'])->name('employee.notification');
     Route::get('user-notify', [NotificationController::class, 'index'])->name('notification.index');

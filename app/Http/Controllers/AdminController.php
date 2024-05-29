@@ -21,6 +21,8 @@ class AdminController extends Controller
         return view("user.loginpage");
     }
 
+   
+
     public function register()
     {
         return view("user.register");
@@ -31,7 +33,8 @@ class AdminController extends Controller
             $user = $this->adminManagementService->register($request);
             if ($user) {
                 dispatch(new SendEmailJob($user));
-                return redirect()->route('register')->with('success', 'user registered successfull');
+              
+                return response()->json(['data' => true, 'route' => route('register'),'message' =>'user registered successfull']);
             } else {
                 return abort(404);
             }
@@ -47,23 +50,25 @@ class AdminController extends Controller
                 'email' => $request->email,
                 'password' => $request->password,
             ];
+
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
                 if ($user->isActive) {
                     if ($user->role == 0) {
-                        return redirect()->route('edashboard')->with('success', 'User login success');
+                        return response()->json(['data' => true, 'route' => route('edashboard')]);
                     } else {
-                        return redirect()->route('dashboard')->with('success', 'admin login success');
+                        return response()->json(['data' => true, 'route' => route('dashboard')]);
                     }
                 } else {
                     Auth::logout();
-                    return redirect()->back()->withErrors(['email' => 'Your account is not active.']);
+                    return response()->json(['message' => 'Your account is not active.'], 401);
                 }
             }
-            return redirect()->back()->withErrors(['email' => 'Enter your Email and Password']);
+
+            return response()->json(['message' => 'Invalid username or password.'], 401);
         } catch (\Exception $e) {
             report($e);
-            return abort(500);
+            return response()->json(['message' => 'Server error.'], 500);
         }
     }
     public function dashboard()

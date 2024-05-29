@@ -125,7 +125,7 @@ $successMessage = session('success');
 
       
 
-    <script src="{{ asset('/dist/js/register.js') }}"></script>
+    <script src="{{ asset('/dist/js/ajax/register.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     <script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

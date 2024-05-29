@@ -74,5 +74,5 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
-<script src="{{ asset('/dist/js/editemployee.js') }}"></script>
+<script src="{{ asset('/dist/js/ajax/editemployee.js') }}"></script>
 @endpush

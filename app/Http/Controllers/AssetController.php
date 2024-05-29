@@ -91,7 +91,8 @@ class AssetController extends Controller
             $update = $this->assetManagementService->updateAsset($request);
 
             if ($update) {
-                return redirect()->route('asset.index')->with('success', 'asset updated success');
+                return response()->json(['data' => true, 'route' => route('asset.index'), 'success' => 'asset updated success']);
+
             } else {
                 return abort(404);
             }

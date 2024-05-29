@@ -12,6 +12,7 @@ $successMessage = session('success');
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <style>
@@ -40,7 +41,7 @@ $successMessage = session('success');
                         <div class="card-header">
                             <h3 class="card-title"> Signup</h3>
                         </div>
-                        <form action="{{ route('signup') }}" method="POST">
+                        <form id="signup" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -99,8 +100,9 @@ $successMessage = session('success');
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <input type="submit" value="submit" class="btn btn-primary">
+                                <input type="submit" value="submit" class="btn btn-primary" id="submitBtn">
                                 <p>Already have an Account <a href="{{ route('loginpage') }}">Login</a></p>
+                                <p class="text text-danger" id="message"></p>
                             </div>
                         </form>
                     </div>
@@ -111,24 +113,23 @@ $successMessage = session('success');
         </div>
         </section>
     </div>
-    @if ($successMessage)
-        <script>
-            $(document).ready(function() {
-                $(document).Toasts('create', {
-                    title: 'Success',
-                    subtitle: 'Email Sent',
-                    body: '{{ $successMessage }}',
-                    autohide: false,
-                    class: 'bg-success',
-                    delay: 10000
-                });
-            });
-        </script>
-    @endif
 
 
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../dist/js/adminlte.min.js"></script>
+<script>
+    const LOGIN_ROUTE ="{{ route('signup') }}";
+    const REDIRECT_ROUTE = "{{ route('register') }}";
+</script>
+
+
+
+
+      
+
+    <script src="{{ asset('/dist/js/ajax/register.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>

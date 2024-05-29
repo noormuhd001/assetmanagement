@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Validation Form</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -30,12 +31,11 @@
     <div class="center-wrapper">
         <div class="form-container">
             <div class="col-md-12">
-
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"> Login to system</h3>
+                        <h3 class="card-title">Login to system</h3>
                     </div>
-                    <form action="{{ route('login') }}" method="POST">
+                    <form id="login" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -60,17 +60,31 @@
                                     </span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
                             <p>Create an account <a href="{{ route('register') }}">signup</a></p>
+                            <p id="message" class="text text-danger"></p>
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-6">
             </div>
-            </section>
         </div>
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../../dist/js/adminlte.min.js"></script>
+    </div>
+    <script>
+        // Define your routes
+        const LOGIN_ROUTE = "{{ route('login') }}";
+        const COMMITTEE_ROUTE = "{{ route('dashboard') }}";
+        const ECOMMITEE_ROUTE = "{{ route('edashboard') }}";
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('/dist/js/ajax/index.js') }}"></script>
+
+
 </body>
 
 </html>

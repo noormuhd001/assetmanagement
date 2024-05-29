@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">Edit </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('employee.update') }}">
+                    <form method="POST" id="editemployee">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -49,7 +49,7 @@
                         <input id="password" type="hidden" class="form-control" name="password"
                             value="{{ $user->password }}">
                         <div class="form-group mb-0">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
                                 Submit
                             </button>
                         </div>
@@ -61,3 +61,18 @@
 </div>
 </div>
 @endsection
+
+
+@push('script')
+<script>
+    const LOGIN_ROUTE = "{{ route('employee.update') }}";
+    const COMMITTEE_ROUTE = "{{ route('employeedetails') }}";
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="{{ asset('../../plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('../../dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('/dist/js/ajax/editemployee.js') }}"></script>
+@endpush

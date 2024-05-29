@@ -48,9 +48,9 @@ class AssetController extends Controller
         try {
             $asset = $this->assetManagementService->storeAsset($request);
             if ($asset) {
-                return redirect()->route('asset.index')->with('success', 'Asset added successfully');
+                return response()->json(['data' => true, 'route' => route('asset.index'), 'success' => 'asset added success']);
             } else {
-                return redirect()->route('asset.index')->with('errror', 'Asset added successfully');
+                return response()->json(['data' => true, 'route' => route('asset.index'), 'error' => 'asset updated error']);
             }
         } catch (\Exception $e) {
             report($e);
@@ -92,7 +92,6 @@ class AssetController extends Controller
 
             if ($update) {
                 return response()->json(['data' => true, 'route' => route('asset.index'), 'success' => 'asset updated success']);
-
             } else {
                 return abort(404);
             }

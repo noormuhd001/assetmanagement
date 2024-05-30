@@ -53,6 +53,9 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                        <a href="{{ route('ticket.display') }}"> <button type="button" class="btn btn-danger" id="cancelBtn">
+                            Cancel
+                        </button></a>
                         <p class="text text-danger" id="messageerror"></p>
                     </form>
                 </div>

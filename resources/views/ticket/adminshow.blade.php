@@ -59,6 +59,9 @@
                         <a href="{{ route('ticket.close', $ticket->id) }}">
                             <button class="btn btn-success">Close Ticket</button>
                         </a>
+                        <a href="{{ route('ticket.admindisplay') }}">
+                            <button class="btn btn-danger">Cancel</button>
+                        </a>
                     @endif
                 </div>
             </div>

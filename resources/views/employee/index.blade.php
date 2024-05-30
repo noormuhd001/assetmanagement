@@ -12,6 +12,9 @@
 @section('breadcrumbs')
     {{ Breadcrumbs::render('employeedetails') }}
 @endsection
+<div class="container">
+    <a href="{{ route('employee.create') }}"><button class="btn btn-success">Add employee</button></a>
+</div>
 @if (session('success'))
     <script>
         Swal.fire({
@@ -23,6 +26,7 @@
         });
     </script>
 @endif
+<br>
 <div class="container">
     <table class="table table-bordered data-table">
         <thead>

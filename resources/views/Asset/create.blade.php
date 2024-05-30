@@ -52,6 +52,9 @@
                                 <button type="submit" class="btn btn-primary" id="submitBtn">
                                     Submit
                                 </button>
+                               <a href="{{ route('asset.index') }}"> <button type="button" class="btn btn-danger" id="cancelBtn">
+                                Cancel
+                            </button></a>
                                 <p class="text text-danger" id="message"></p>
                             </div>
                         </form>

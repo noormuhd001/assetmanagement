@@ -39,6 +39,9 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary" id="submitBtn">Send Reply</button>
+                            <a href="{{ route('ticket.display') }}"> <button type="button" class="btn btn-danger" id="cancelBtn">
+                                Cancel
+                            </button></a>
                             <p class="text text-danger" id="message"></p>
                         </form>
                     @else

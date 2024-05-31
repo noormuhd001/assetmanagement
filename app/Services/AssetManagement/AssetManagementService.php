@@ -4,6 +4,7 @@ namespace App\Services\AssetManagement;
 
 use App\Models\Asset;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class AssetManagementService
@@ -44,6 +45,7 @@ class AssetManagementService
         $user = User::findOrFail($id);
         $addasset = Asset::findOrFail($assetid);
         $addasset->status = 1;
+        $addasset->uuid =(string) Str::uuid();
         $addasset->employeeid = $user->id;
         $addasset->save();
         return $addasset;
@@ -54,6 +56,7 @@ class AssetManagementService
 
         $removeasset = Asset::findOrFail($id);
         $removeasset->status = 0;
+        $removeasset->uuid =null;
         $removeasset->employeeid = 0;
         $removeasset->save();
         return $removeasset;

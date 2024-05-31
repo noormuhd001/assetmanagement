@@ -46,15 +46,24 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="accountstatus">AccountStatus</label>
+                              <select name="accountstatus" id="accountstatus" class="form-control">
+                            <option value="0">Enable</option>
+                            <option value="1">Disable</option>
+                        </select>
+                        </div>
+                      
                         <input id="password" type="hidden" class="form-control" name="password"
                             value="{{ $user->password }}">
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-primary" id="submitBtn">
                                 Submit
                             </button>
-                            <a href="{{ route('employeedetails') }}"> <button type="button" class="btn btn-danger" id="cancelBtn">
+                            <a href="{{ route('employeedetails') }}"><button type="button" class="btn btn-danger" id="deleteBtn">
                                 Cancel
                             </button></a>
+                            
                         </div>
                     </form>
                 </div>

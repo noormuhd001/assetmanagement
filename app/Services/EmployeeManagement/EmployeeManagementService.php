@@ -48,6 +48,7 @@ class EmployeeManagementService
         $id = $data->id;
         $update = User::findOrFail($id);
         $update->name = $data->name;
+        $update->account_status = $data->accountstatus;
         $update->email = $data->email;
         $update->phone = $data->phone;
         $update->save();

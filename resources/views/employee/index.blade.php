@@ -36,7 +36,8 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Status</th>
-                <th width="200px" colspan="2">Action</th>
+                <th>Account Status</th>
+                <th width="300px" colspan="2">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -84,7 +85,14 @@
                                 '<span class="badge bg-danger">Inactive</span>';
                         }
                     },
-
+                    {
+                        data: 'account_status',
+                        name: 'account_status',
+                        render: function(data, type, full, meta) {
+                            return data == 0 ? '<span class="badge bg-success">Enable</span>' :
+                                '<span class="badge bg-danger">Disable</span>';
+                        }
+                    },
                     {
                         data: 'action',
                         name: 'action',
